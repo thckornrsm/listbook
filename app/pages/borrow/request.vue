@@ -60,7 +60,7 @@ import BorrowRemarkCard from '~/components/borrow/BorrowRemarkCard.vue'
 import BorrowSubmitBar from '~/components/borrow/BorrowSubmitBar.vue'
 
 import { today, getLocalTimeZone, parseDate } from '@internationalized/date'
-import type { DateValue } from '@internationalized/date'
+import type { DateValue } from '@internationalized/date'  
 
 const router = useRouter()
 

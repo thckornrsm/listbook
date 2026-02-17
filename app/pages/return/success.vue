@@ -32,7 +32,7 @@
         </div>
 
         <!-- text -->
-        <h1 class="mt-10 text-center text-3xl font-extrabold text-[#ED7E24]">
+        <h1 class="mt-10 text-center text-3xl  text-[#ED7E24]">
           คืนสื่อเสร็จสิ้น
         </h1>
 

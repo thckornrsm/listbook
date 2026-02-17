@@ -1,17 +1,19 @@
 <template>
-  <UCard :ui="{ root  : 'rounded-2xl' }" class="bg-white">
+  <UCard :ui="{ root: 'rounded-2xl', body: { base: 'p-4' } }" class="bg-white shadow-sm">
     <div class="flex items-center justify-between">
       <div class="text-sm font-semibold text-slate-900">ระยะเวลาในการยืม</div>
 
-      <!-- @nuxt/ui v3: trigger = default slot, content = #content -->
-      <UPopover :content="{ side: 'bottom', align: 'end', sideOffset: 8 }">
-        <UButton variant="ghost" color="gray" class="h-10 w-10 rounded-full">
-          <UIcon name="i-heroicons-calendar-days" class="h-5 w-5" />
-        </UButton>
+      <UPopover placement="bottom-end">
+        <UButton
+          variant="ghost"
+          color="gray"
+          class="h-10 w-10 rounded-full"
+          icon="i-heroicons-calendar-days"
+        />
 
         <template #content>
           <div class="p-2">
-            <UCalendar v-model="modelRange as any" :is-range="true" />
+            <UCalendar v-model="modelRange" is-range />
           </div>
         </template>
       </UPopover>
@@ -21,14 +23,14 @@
       <div class="rounded-2xl bg-slate-50 p-3">
         <div class="text-xs text-slate-500">วันเริ่ม</div>
         <div class="mt-1 text-sm font-semibold text-slate-900">
-          {{ fmtDate(modelRange?.start) || '-' }}
+          {{ fmt(modelRange?.start) || '-' }}
         </div>
       </div>
 
       <div class="rounded-2xl bg-slate-50 p-3">
         <div class="text-xs text-slate-500">วันสิ้นสุด</div>
         <div class="mt-1 text-sm font-semibold text-slate-900">
-          {{ fmtDate(modelRange?.end) || '-' }}
+          {{ fmt(modelRange?.end) || '-' }}
         </div>
       </div>
     </div>
@@ -36,16 +38,11 @@
 </template>
 
 <script setup lang="ts">
-import type { DateValue } from '@internationalized/date'
+type Range = { start?: Date; end?: Date } | null
+const modelRange = defineModel<Range>('range', { required: true })
 
-type RangeValue = { start: any; end: any } | null
-const modelRange = defineModel<RangeValue>('range', { default: null })
-
-const fmtDate = (d?: any) => {
+const fmt = (d?: Date) => {
   if (!d) return ''
-  const js = new Date(d.year, d.month - 1, d.day)
-  return new Intl.DateTimeFormat('th-TH', { dateStyle: 'medium' }).format(js)
+  return new Intl.DateTimeFormat('th-TH', { dateStyle: 'medium' }).format(d)
 }
 </script>
-
-

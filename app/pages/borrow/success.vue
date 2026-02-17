@@ -20,7 +20,7 @@
                 </div>
 
                 <!-- text -->
-                <h1 class="mt-8 text-center text-3xl font-extrabold text-[#0B8A64]">
+                <h1 class="mt-8 text-center text-3xl  text-[#0B8A64]">
                     การยืมเสร็จสิ้น
                 </h1>
 
