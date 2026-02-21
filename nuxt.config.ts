@@ -8,5 +8,6 @@ export default defineNuxtConfig({
     preference: 'light',
     fallback: 'light',
     classSuffix: '' // ทำให้เป็น class="dark" ตรงๆ (กันเพี้ยน)
-  }
+  },
+  
 })

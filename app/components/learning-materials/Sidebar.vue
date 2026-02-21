@@ -31,16 +31,33 @@ const UAvatar = resolveComponent('UAvatar')
 
 const navGroups: NavGroup[] = [
   {
-    title: 'ประวัติการทำรายการทั่วประเทศ',
+    title: 'เมนู',
     items: [
-      { label: 'คลังสื่อสารการเรียนรู้ (ศูนย์ใหญ่)', to: '/learning-materials' },
-      { label: 'ประวัติ ขอ-ยืม-คืน-แจ้งซ่อม (บุคคลภายนอก)', to: '/learning-materials/history-external' },
-      { label: 'ประวัติ ขอ-ยืม-คืน-แจ้งซ่อม (จนท. สสส.)', to: '/learning-materials/history-staff' }
+      { label: 'ยืมคืนสื่อการเรียนรู้', to: '/learning-materials/borrow-return' },
+      { label: 'แจ้งซ่อมสื่อการเรียนรู้', to: '/learning-materials/repair' },
+      { label: 'สื่อการเรียนรู้ทั้งหมด', to: '/learning-materials/' },
+      // { label: 'ประวัติ ขอ-ยืม-คืน-แจ้งซ่อม (จนท. สสส.)', to: '/learning-materials/history-staff' }
     ]
   },
   {
-    title: 'ข้อมูลหลัก & ย่อย',
-    items: [{ label: 'ย่อยรายการความพึงพอใจ', to: '/learning-materials/satisfaction' }]
+    title: 'รายงาน',
+    items: [{ label: 'รายงานแบบประเมินความพึงพอใจ', to: '/learning-materials/satisfaction-report' },
+      { label: 'รายงานยืมคืนสื่อการเรียนรู้', to: '/learning-materials/borrow-return-report' },
+      { label: 'รายงานสื่อการเรียนรู้แยกตามประเภทของสื่อ/ประเด็นสื่อ/เลขลำดับสื่อ', to: '/learning-materials/media-report' }
+    ]
+  },
+  {
+    title: 'จัดการข้อมูล',
+    items: [
+      { label: 'วัตถุประสงค์การใช้งาน', to: '/learning-materials/purpose' },
+      { label: 'ประภทผู้รับสื่อ', to: '/learning-materials/receiver-type' },
+      { label: 'กลุ่มเป้าหมาย', to: '/learning-materials/target' },
+      { label: 'ประเภทสื่อ/ประเด็นสื่อ/เลขลำดับสื่อ', to: '/learning-materials/media-type' },
+      { label: 'สมาชิก', to: '/learning-materials/user' },
+      { label: 'เจ้าหน้าที่ศูนย์', to: '/learning-materials/center-staff' },
+      { label: 'คําถามแบบประเมินความพึงพอใจ', to: '/learning-materials/satisfaction-question' }
+
+    ]
   }
 ]
 

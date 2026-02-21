@@ -1,5 +1,5 @@
 <template>
-  <USelectMenu
+  <USelect
     v-model="model"
     :items="items"
     :placeholder="placeholder"
@@ -8,9 +8,7 @@
       base: 'h-10 w-full rounded-lg bg-white border border-slate-300 text-slate-700 text-sm',
       content: 'bg-white border border-slate-200 shadow-lg rounded-xl ring-0 outline-none',
       input: 'bg-white text-slate-900 placeholder:text-slate-400 border border-slate-200  px-3  text-sm',
-      label: 'px-3 pt-2 pb-1 text-sm  text-black',
-      separator: 'my-1 h-px bg-slate-200',
-      item: 'px-3 py-2 rounded-lg text-black',
+      
     } as any)"
   /> 
 </template>

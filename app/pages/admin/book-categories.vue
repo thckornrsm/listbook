@@ -152,7 +152,7 @@ function getRowItems(row) {
       type: 'separator'
     },
     {
-      label: 'Delete',
+      label: 'ลบออก',
       icon: 'i-lucide-trash-2',
       color: 'error',
       onSelect() {
