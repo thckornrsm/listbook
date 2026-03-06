@@ -3,7 +3,7 @@
     <UButton
       block
       size="xl"
-      class="h-14 rounded-2xl bg-[#ED7E24] text-lg font-semibold text-white hover:bg-[#ED7E24]/90 active:scale-[0.99]"
+      class="h-14 rounded-2xl bg-[#ED7E24] text-lg  text-white hover:bg-[#ED7E24]/90 active:scale-[0.99]"
       :disabled="disabled"
       @click="emit('submit')"
     >

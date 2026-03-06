@@ -1,51 +1,83 @@
 <template>
-    <UCard :ui="{ root: 'rounded-2xl', body: { base: 'p-4' } }" class="bg-white shadow-sm">
-        <div class="text-sm font-semibold text-slate-900">3. หลักฐานรูปถ่าย</div>
+  <div class="space-y-4">
+    <div class="text-base font-semibold">แนบหลักฐานรูปถ่าย</div>
 
-        <div class="mt-3">
-            <label class="mt-3 flex h-28 w-full cursor-pointer flex-col items-center justify-center
-         rounded-2xl border border-dashed border-slate-300 bg-white
-         text-slate-700 active:scale-[0.99]">
-                <UIcon name="i-heroicons-camera" class="h-6 w-6 text-slate-500" />
-                <div class="mt-2 text-sm font-semibold text-slate-700">เพิ่มรูป</div>
-                <input type="file" class="hidden" accept="image/*" multiple @change="onPickFiles" />
-            </label>
+    <label class="block cursor-pointer">
+      <input
+        type="file"
+        class="hidden"
+        accept="image/*"
+        multiple
+        @change="onPick"
+      />
 
-
-            <div v-if="model.length" class="mt-4 grid grid-cols-3 gap-3">
-                <div v-for="(src, i) in model" :key="i"
-                    class="relative overflow-hidden rounded-xl border border-slate-200">
-                    <img :src="src" class="h-24 w-full object-cover" alt="preview" />
-
-                    <UButton variant="solid" color="neutral"
-                        class="absolute right-1 top-1 h-7 w-7 rounded-full bg-black/50 p-0 text-white hover:bg-black/60"
-                        @click.prevent="removePreview(i)" aria-label="remove">
-                        ×
-                    </UButton>
-                </div>
-            </div>
+      <div
+        class="flex h-24 w-full flex-col items-center justify-center rounded-md border border-dashed border-[#94A3B8] bg-white text-[#62748E]"
+      >
+        <div class="text-center space-y-2">
+          <UIcon
+            name="i-lucide-camera"
+            class="mx-auto h-8 w-8 text-slate-500"
+          />
+          <div class="font-semibold">เพิ่มรูป</div>
         </div>
-    </UCard>
+      </div>
+    </label>
+
+    <div v-if="modelValue?.length" class="grid grid-cols-3 gap-2">
+      <div
+        v-for="(img, idx) in modelValue"
+        :key="idx"
+        class="relative aspect-square overflow-hidden rounded-md ring-1 ring-slate-200"
+      >
+        <img :src="img" class="h-full w-full object-cover" />
+
+        <button
+          type="button"
+          class="absolute right-1 top-1 grid h-7 w-7 place-items-center rounded-full bg-white/90 ring-1 ring-slate-200"
+          @click="remove(idx)"
+          aria-label="remove"
+        >
+          <UIcon name="i-lucide-x" class="h-4 w-4 text-slate-700" />
+        </button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-const model = defineModel<string[]>({ default: [] })
+const props = defineProps<{
+  modelValue: string[];
+}>();
 
-const onPickFiles = (e: Event) => {
-    const input = e.target as HTMLInputElement
-    const files = input.files
-    if (!files?.length) return
+const emit = defineEmits<{
+  (e: "update:modelValue", v: string[]): void;
+}>();
 
-    const next = [...model.value]
-    Array.from(files).forEach((f) => next.push(URL.createObjectURL(f)))
-    model.value = next
+const onPick = async (e: Event) => {
+  const input = e.target as HTMLInputElement;
+  const files = Array.from(input.files || []);
+  if (!files.length) return;
 
-    input.value = ''
-}
+  const urls = await Promise.all(
+    files.map(
+      (f) =>
+        new Promise<string>((resolve) => {
+          const r = new FileReader();
+          r.onload = () => resolve(String(r.result));
+          r.readAsDataURL(f);
+        }),
+    ),
+  );
 
-const removePreview = (i: number) => {
-    const url = model.value[i]
-    if (url) URL.revokeObjectURL(url)
-    model.value = model.value.filter((_, idx) => idx !== i)
-}
+  emit("update:modelValue", [...(props.modelValue || []), ...urls]);
+  input.value = "";
+};
+
+const remove = (idx: number) => {
+  emit(
+    "update:modelValue",
+    (props.modelValue || []).filter((_, i) => i !== idx),
+  );
+};
 </script>

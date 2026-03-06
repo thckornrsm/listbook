@@ -203,7 +203,8 @@ const selectedCount = computed(() => Object.values(rowSelection.value).filter(Bo
 
 // pagination
 const currentPage = ref<number>(1)
-const pageSize = ref<number>(5)
+const pageSize = ref<number>(8)
+
 
 // ✅ เอา label ออก ลดเส้นคั่น/ช่องว่างเพี้ยน
 const categoryItems = computed<SelectMenuItem[]>(() => {
@@ -286,9 +287,9 @@ const columns: TableColumn<MediaItem>[] = [
   // ===== ID =====
   {
     accessorKey: 'id',
-    header: '#',
+    header: 'ID',
     cell: ({ row }) =>
-      h('span', { class: 'text-slate-500 text-[13px]' }, `#${row.getValue('id')}`),
+      h('span', { class: 'text-slate-500 text-[13px]' }, `${row.getValue('id')}`),
     meta: {
       class: {
         th: 'w-16',
@@ -356,7 +357,7 @@ const columns: TableColumn<MediaItem>[] = [
   {
     id: 'actions',
     header: 'จัดการ',
-    meta: { class: { th: 'text-right', td: 'text-right' } },
+    meta: { class: { th: 'text-center', td: 'text-center' } },
     cell: ({ row }) => {
       const id = row.original.id
 
@@ -380,7 +381,7 @@ const columns: TableColumn<MediaItem>[] = [
         ]
       ]
 
-      return h('div', { class: 'flex justify-end items-center gap-1' }, [
+      return h('div', { class: 'flex justify-center items-center gap-1' }, [
         // Edit button
         h(UButton as any, {
           icon: 'i-heroicons-pencil-square-20-solid',

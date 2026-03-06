@@ -1,5 +1,5 @@
 <template>
-  <USelect
+  <USelectMenu
     v-model="model"
     :items="items"
     :placeholder="placeholder"

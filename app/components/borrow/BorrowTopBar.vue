@@ -1,14 +1,14 @@
 <template>
-  <header class="sticky top-0 z-20 h-14 bg-[#ED7E24] text-white">
-    <div class="mx-auto flex h-14 w-full max-w-md items-center px-4">
+  <header class=" h-14 bg-[#ED7E24] text-white">
+    <div class="sticky top-0 z-20 flex h-14 w-full max-w-md items-center px-4">
       <UButton
         variant="ghost"
-        color="white"
+        color="neutral"
         class="h-10 w-10 rounded-full text-white hover:bg-white/15"
         icon="i-heroicons-chevron-left"
         @click="onBack"
       />
-      <div class="flex-1 text-center text-base font-semibold">
+      <div class="flex-1   font-semibold">
         {{ title }}
       </div>
       <div class="h-10 w-10" />

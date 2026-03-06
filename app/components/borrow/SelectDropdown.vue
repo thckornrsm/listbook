@@ -10,67 +10,73 @@ const props = defineProps<{
   label?: string
   placeholder?: string
   options: Opt[]
-  heightClass?: string
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  fullWidth?: boolean // ✅ เพิ่ม: ให้ dropdown กว้างเท่าปุ่ม
 }>()
 
 const emit = defineEmits<{
   (e: 'update:modelValue', v: string): void
 }>()
 
-const open = ref(false)
-
 const selectedLabel = computed(() => {
-  const found = props.options.find(o => o.value === props.modelValue)
+  const found = props.options.find((o) => o.value === props.modelValue)
   return found?.label || (props.placeholder ?? '-- เลือก --')
 })
 
 const pick = (v: string) => {
   emit('update:modelValue', v)
-  open.value = false
 }
 
-const items = computed<DropdownMenuItem[]>(() =>
-  props.options.map(o => ({
+const items = computed<DropdownMenuItem[][]>(() => [
+  props.options.map((o) => ({
     label: o.label,
-    // ✅ รองรับทั้ง 2 แบบ (ต่างเวอร์ชันใช้ไม่เหมือนกัน)
-    click: () => pick(o.value),
-    onSelect: () => pick(o.value)
+    // รองรับต่างเวอร์ชันของ Nuxt UI
+    onSelect: () => pick(o.value),
+    click: () => pick(o.value)
   }))
-)
+])
 
-const triggerClass = computed(() => {
-  const h = props.heightClass ?? 'h-14'
-  return [
-    'w-full', h,
-    'rounded-2xl',
-    'bg-white',
-    'ring-1 ring-slate-200',
-    'justify-between',
-    'px-4',
-    'text-left',
-    'hover:bg-white',
-    'active:bg-white'
-  ].join(' ')
+// ✅ content width: ถ้า fullWidth=true ให้กว้างเท่าปุ่ม
+const contentClass = computed(() => {
+  if (props.fullWidth) {
+    // อันนี้จะพยายามทำให้กว้างเท่า trigger
+    // ถ้าเวอร์ชันคุณรองรับตัวแปร anchor width จะเนียนมาก
+    return 'w-full min-w-[var(--reka-popper-anchor-width)]'
+  }
+  // ค่าแบบ docs
+  return 'w-48'
 })
 </script>
 
 <template>
-  <div v-bind="$attrs">
-    <div v-if="label" class="mb-2 text-sm font-semibold text-slate-900">
+  <div v-bind="$attrs" class="w-full">
+    <div v-if="label" class="mb-2  font-semibold ">
       {{ label }}
     </div>
 
     <UDropdownMenu
-      v-model:open="open"
       :items="items"
-      :ui="{ content: 'w-[calc(100vw-2rem)] max-w-md z-[999999]' }"
+      :content="{
+        align: 'start',
+        side: 'bottom',
+        sideOffset: 8
+      }"
+      size="xl"
+      :ui="{
+        // ✅ ปล่อยกรอบ/สไตล์เป็น default ของ Nuxt UI
+        // เราคุมแค่ “ความกว้าง” ของกล่อง dropdown
+        content: contentClass
+      }"
     >
-      <UButton variant="outline" color="gray" :class="triggerClass">
-        <span :class="props.modelValue ? 'text-slate-900 font-semi' : 'text-slate-500 font-normal'">
-          {{ selectedLabel }}
-        </span>
-        <UIcon class="text-slate-500" name="i-heroicons-chevron-down" />
-      </UButton>
+      <!-- ✅ Trigger ใช้ default Nuxt UI (เหมือน docs) -->
+      <UButton
+        :label="selectedLabel"
+        color="neutral"
+        variant="outline"
+        trailing-icon="i-lucide-chevron-down"
+       
+        class="w-full justify-between"
+      />
     </UDropdownMenu>
   </div>
 </template>

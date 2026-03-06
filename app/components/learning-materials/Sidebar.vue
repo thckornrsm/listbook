@@ -50,7 +50,7 @@ const navGroups: NavGroup[] = [
     title: 'จัดการข้อมูล',
     items: [
       { label: 'วัตถุประสงค์การใช้งาน', to: '/learning-materials/purpose' },
-      { label: 'ประภทผู้รับสื่อ', to: '/learning-materials/receiver-type' },
+      { label: 'ประเภทผู้รับสื่อ', to: '/learning-materials/receiver-type' },
       { label: 'กลุ่มเป้าหมาย', to: '/learning-materials/target' },
       { label: 'ประเภทสื่อ/ประเด็นสื่อ/เลขลำดับสื่อ', to: '/learning-materials/media-type' },
       { label: 'สมาชิก', to: '/learning-materials/user' },

@@ -1,5 +1,5 @@
 <template>
-  <div class="sticky top-0 z-20 flex h-14 items-center bg-[#ED7E24] px-4 text-white">
+  <div class="fixed inset-x-0 top-0 z-50 flex h-14 items-center bg-[#ED7E24] px-4 text-white">
     <UButton
       variant="ghost"
       color="neutral"
@@ -19,6 +19,6 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ title: string }>()
+defineProps<{ title: string }>()
 const emit = defineEmits<{ (e: 'back'): void }>()
 </script>

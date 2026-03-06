@@ -8,7 +8,7 @@
           :placeholder="searchPlaceholderValue"
           size="sm"
           class="w-full"
-          color="neutral"
+          color="primary"
           variant="outline"
           :ui="{
             base: 'h-10 w-full rounded-lg bg-white border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:ring-1 focus:ring-slate-300 focus:border-slate-300'

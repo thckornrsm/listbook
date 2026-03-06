@@ -6,10 +6,7 @@
 }
 
 
-/* ให้ตัวอักษรใน input/textarea เป็นสีดำ */
-input, textarea, select {
-  color: #0f172a; /* slate-900 */
-}
+
 input::placeholder, textarea::placeholder {
   color: #94a3b8; /* slate-400 */
 }

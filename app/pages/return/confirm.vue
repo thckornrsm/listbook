@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-dvh bg-slate-100 text-slate-900">
+  <div class="min-h-dvh bg-slate-100 pt-14 text-slate-900">
     <ReturnTopBar title="กรอกข้อมูลการคืน" @back="router.back()" />
 
     <main class="mx-auto w-full max-w-md px-4 py-4">
@@ -53,6 +53,6 @@ const onSubmit = () => {
     suggestion: suggestion.value,
     photosCount: previews.value.length
   })
-  router.push('/return/confirm')
+  router.push('/return/success')
 }
 </script>

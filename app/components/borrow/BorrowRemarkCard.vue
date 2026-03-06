@@ -1,15 +1,14 @@
 <template>
-  <UCard :ui="{ root: 'rounded-2xl' }" class="bg-white">
-    <div class="text-sm font-semibold text-slate-900">หมายเหตุ</div>
+  <div class="space-y-3">
+    <div class=" font-semibold ">หมายเหตุ</div>
     <UTextarea
       v-model="modelRemark"
       :rows="3"
       placeholder="กรอกหมายเหตุ..."
       size="xl"
-      class="mt-3 w-full"
-      :ui="softFieldUI"
+      class="w-full"
     />
-  </UCard>
+  </div>
 </template>
 
 <script setup lang="ts">

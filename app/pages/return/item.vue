@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-dvh bg-slate-100 text-slate-900">
+  <div class="min-h-dvh pt-14 bg-slate-100 text-slate-900">
     <ReturnTopBar title="ระบบคืนเครื่องมือการเรียนรู้" @back="router.back()" />
 
     <main class="mx-auto w-full max-w-md space-y-4 px-4 py-4">

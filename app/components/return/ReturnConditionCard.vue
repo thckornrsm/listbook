@@ -1,6 +1,6 @@
 <template>
-  <UCard :ui="{ root: 'rounded-2xl', body: { base: 'p-4' } }" class="bg-white shadow-sm">
-    <div class="text-base font-extrabold text-slate-900">สภาพการใช้งาน</div>
+  <div class="space-y-4">
+    <div class="text-base font-semibold ">สภาพการใช้งาน</div>
 
     <div class="mt-3 space-y-3">
       <button
@@ -13,11 +13,15 @@
       >
         <div class="flex items-center justify-between gap-4">
           <div class="flex items-center gap-4">
-            <!-- วงกลมใหญ่ซ้าย -->
-            <div class="h-12 w-12 rounded-full border-2 transition" :class="leftCircleClass(opt.value)" />
+            <!-- ✅ เอาวงกลมใหญ่ออก แล้วทำ ICON ให้ใหญ่เท่าเดิม (48x48) -->
+            <UIcon
+              :name="iconName(opt.value)"
+              class="h-12 w-12 shrink-0 transition"
+              :class="[iconColorClass(opt.value), iconScaleClass(opt.value)]"
+            />
 
             <div>
-              <div class="text-base f" :class="titleClass(opt.value)">
+              <div class="text-base " :class="titleClass(opt.value)">
                 {{ opt.label }}
               </div>
               <div class="mt-1 text-sm" :class="descClass(opt.value)">
@@ -31,7 +35,7 @@
         </div>
       </button>
     </div>
-  </UCard>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -44,7 +48,7 @@ const options: { label: string; description: string; value: Condition }[] = [
   { label: 'ชำรุดมาก / สูญหาย', description: 'ใช้งานต่อไม่ได้ หรือของหาย', value: 'bad' }
 ]
 
-// theme 3 สี (เหมือนที่คุณใช้)
+// theme 3 สี (เหมือนเดิม)
 const theme = {
   good: {
     border: 'border-[#0B8D6E]',
@@ -76,10 +80,15 @@ const cardClass = (v: Condition) =>
     ? `${theme[v].border} ${theme[v].bg}`
     : 'border-slate-200 bg-white hover:bg-slate-50'
 
-const leftCircleClass = (v: Condition) =>
-  isSelected(v)
-    ? `${theme[v].border} ${theme[v].dotBg}`
-    : 'border-slate-400 bg-white'
+// ✅ mapping: เขียว = smile, เหลือง = meh, แดง = frown
+const iconName = (v: Condition) =>
+  v === 'good' ? 'lucide:smile' : v === 'minor' ? 'lucide:meh' : 'lucide:frown'
+
+const iconColorClass = (v: Condition) =>
+  isSelected(v) ? theme[v].text : 'text-slate-500'
+
+// ✅ เพิ่มความเด่นเล็กน้อยตอนเลือก (จะเอาออกก็ได้)
+const iconScaleClass = (v: Condition) => (isSelected(v) ? 'scale-110' : 'scale-100')
 
 const rightDotClass = (v: Condition) =>
   isSelected(v)

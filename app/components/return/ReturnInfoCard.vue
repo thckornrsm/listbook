@@ -5,7 +5,7 @@
       class="flex w-full items-center justify-between px-4 py-4"
       @click="modelOpen = !modelOpen"
     >
-      <div class="text-base font-extrabold text-[#ED7E24]">{{ title }}</div>
+      <div class="text-base font-semibold  text-[#ED7E24]">{{ title }}</div>
       <UIcon
         name="i-heroicons-chevron-down"
         class="h-5 w-5 text-slate-700 transition-transform"

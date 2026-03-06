@@ -28,7 +28,7 @@
             <div class="mt-4 overflow-hidden rounded-2xl bg-white shadow-sm">
                 <!-- Quantity row -->
                 <div class="flex items-center justify-between px-4 py-4">
-                    <div class="text-base font-semibold text-slate-900">จำนวนที่ต้องการ</div>
+                    <div class="text-base font-semibold ">จำนวนที่ต้องการ</div>
 
                     <div class="flex items-center gap-3">
                         <button
@@ -45,7 +45,7 @@
 
                 <!-- Purpose -->
                 <div class="px-4 py-4">
-                    <div class="text-base font-semibold text-slate-900">วัตถุประสงค์</div>
+                    <div class="text-base font-semibold ">วัตถุประสงค์</div>
                     <div class="mt-3 relative">
                         <select v-model="purpose"
                             class="h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 pr-10 text-slate-700 outline-none">
@@ -61,7 +61,7 @@
 
                 <!-- Note -->
                 <div class="px-4 pb-4">
-                    <div class="text-base font-semibold text-slate-900">เพิ่มเติม</div>
+                    <div class="text-base font-semibold ">เพิ่มเติม</div>
                     <textarea v-model="note" rows="4"
                         class="mt-3 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 outline-none"
                         placeholder="กรอกรายละเอียดเพิ่มเติม" />

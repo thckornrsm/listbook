@@ -5,7 +5,7 @@
 
     <main class="mx-auto w-full max-w-md px-4 py-6">
       <BookingSuccessCard
-        title="ยืนยันการคืน"
+        title="รายละเอียดการคืน"
         :rows="rows"
         :note="note"
         button-text="เสร็จสิ้น"
@@ -40,6 +40,6 @@ const rows = [
 const note = '“นำไปใช้ประกอบกิจกรรมกลุ่มวิทยาศาสตร์”'
 
 const onDone = () => {
-  router.push('/return') // ปรับปลายทาง
+  // router.push('/return') // ปรับปลายทาง
 }
 </script>

@@ -14,7 +14,7 @@ const props = defineProps<{
   iconSrc?: string
 }>()
 
-const iconSrc = computed(() => props.iconSrc ?? '/icons/check-circle.svg')
+const iconSrc = computed(() => props.iconSrc ?? '/icons/check-circle1.svg')
 </script>
 
 <style scoped>
@@ -23,7 +23,7 @@ const iconSrc = computed(() => props.iconSrc ?? '/icons/check-circle.svg')
   width: 260px;              /* ปรับได้ */
   aspect-ratio: 1 / 1;
   border-radius: 999px;
-  background: rgba(253, 212, 180, 1); /* #FDD4B4 */
+  background: rgba(239, 251, 238, 1); /* #FDD4B4 */
   display: grid;
   place-items: center;
 }

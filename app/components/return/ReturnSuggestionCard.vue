@@ -1,23 +1,26 @@
 <template>
-  <UCard :ui="{ root: 'rounded-2xl', body: { base: 'p-4' } }" class="bg-white shadow-sm">
-    <div class="text-sm font-semibold text-slate-900">ข้อเสนอเพิ่มเติม</div>
+  
+    <div class="space-y-4">
+      <div class="text-base font-semibold ">ข้อเสนอเพิ่มเติม</div>
 
-    <UTextarea
-      v-model="model"
-      :rows="4"
-      placeholder="เขียนข้อเสนอเพิ่มเติม..."
-      class="mt-3 w-full"
-      :ui="softFieldUI"
-    />
-  </UCard>
+      <UTextarea
+        :model-value="modelValue"
+        @update:model-value="$emit('update:modelValue', $event)"
+        placeholder="เขียนข้อเสนอเพิ่มเติม..."
+       
+        class="w-full"
+        size="xl"
+      />
+    </div>
+  
 </template>
 
 <script setup lang="ts">
-const model = defineModel<string>({ default: '' })
+defineProps<{
+  modelValue: string
+}>()
 
-const softFieldUI = {
-  base:
-    'bg-slate-50 ring-1 ring-slate-200 focus-within:ring-2 focus-within:ring-[#ED7E24]/30',
-  rounded: 'rounded-2xl'
-}
+defineEmits<{
+  (e: 'update:modelValue', v: string): void
+}>()
 </script>

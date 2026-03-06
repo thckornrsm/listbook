@@ -9,11 +9,13 @@ import Sidebar from '~/components/learning-materials/Sidebar.vue'
       <Sidebar />
 
       <!-- ✅ ฝั่งขวา scroll เอง + กัน flex ทำให้ตารางล้น -->
-      <main class="flex-1 min-w-0 overflow-y-auto">
-        <div class="px-6 py-6 md:px-10 md:py-8 min-w-0">
+      <main class="flex-1 min-w-0 ">
+        <div class="px-6 py-6 md:px-10 md:py-4 min-w-0">
           <slot />
         </div>
       </main>
     </div>
   </div>
 </template>
+
+
