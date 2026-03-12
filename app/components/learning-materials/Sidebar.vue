@@ -43,7 +43,8 @@ const navGroups: NavGroup[] = [
     title: 'รายงาน',
     items: [{ label: 'รายงานแบบประเมินความพึงพอใจ', to: '/learning-materials/satisfaction-report' },
       { label: 'รายงานยืมคืนสื่อการเรียนรู้', to: '/learning-materials/borrow-return-report' },
-      { label: 'รายงานสื่อการเรียนรู้แยกตามประเภทของสื่อ/ประเด็นสื่อ/เลขลำดับสื่อ', to: '/learning-materials/media-report' }
+      { label: 'รายงานสื่อการเรียนรู้แยกตามประเภทของสื่อ/ประเด็นสื่อ/เลขลำดับสื่อ', to: '/learning-materials/media-report' },
+      { label: 'การเก็บประวัติการการส่งข้อความ', to: '/learning-materials/log-report' }
     ]
   },
   {
